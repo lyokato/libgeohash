@@ -1,0 +1,16 @@
+=======================================================================
+ INSTALL
+ =======================================================================
+
+ 1. cd build
+ 2. cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release
+
+ parameters
+    - BUILD_SHARED_LIBS (ON|OFF)
+    - CMAKE_BUILD_TYPE (Debug|Release)
+    - CMAKE_INSTALL_PREFIX (/usr/local)
+
+3. make
+4. make test
+5. make install
+

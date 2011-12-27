@@ -1,0 +1,3 @@
+/Users/lyokato/workdir/c/geohash/build/include/CMakeFiles/geohash.dir
+/Users/lyokato/workdir/c/geohash/build/include/CMakeFiles/geohash_static.dir
+/Users/lyokato/workdir/c/geohash/build/tests/CMakeFiles/geohash_test.dir
