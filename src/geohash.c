@@ -157,7 +157,7 @@ GEOHASH_encode(double lat, double lon, unsigned int len)
     GEOHASH_range lon_range = { 180, -180 };
 
     double val1, val2, val_tmp;
-    GEOHASH_range range1, range2, range_tmp;
+    GEOHASH_range *range1, *range2, *range_tmp;
 
     assert(lat >= -90.0);
     assert(lat <= 90.0);
@@ -169,17 +169,17 @@ GEOHASH_encode(double lat, double lon, unsigned int len)
     if (hash == NULL)
         return NULL;
 
-    val1 = lon; range1 = lon_range;
-    val2 = lat; range2 = lat_range;
+    val1 = lon; range1 = &lon_range;
+    val2 = lat; range2 = &lat_range;
 
     for (i=0; i < len; i++) {
 
         bits = 0;
-        bits |= (GEOHASH_range_bit(&range1, val1) << 4);
-        bits |= (GEOHASH_range_bit(&range2, val2) << 3);
-        bits |= (GEOHASH_range_bit(&range1, val1) << 2);
-        bits |= (GEOHASH_range_bit(&range2, val2) << 1);
-        bits |= (GEOHASH_range_bit(&range1, val1) << 0);
+        bits |= (GEOHASH_range_bit(range1, val1) << 4);
+        bits |= (GEOHASH_range_bit(range2, val2) << 3);
+        bits |= (GEOHASH_range_bit(range1, val1) << 2);
+        bits |= (GEOHASH_range_bit(range2, val2) << 1);
+        bits |= (GEOHASH_range_bit(range1, val1) << 0);
 
         hash[i] = BASE32_ENCODE_TABLE[bits];
         
