@@ -95,6 +95,19 @@ GEOHASH_range_bit(GEOHASH_range *range, double value)
     }
 }
 
+bool
+GEOHASH_verify_hash(const char *hash)
+{
+    const char *p;
+    p = hash;
+    while (*p != '\0') {
+        if (strchr(BASE32_ENCODE_TABLE, tolower(*p++)) == NULL) {
+            return false;
+        }
+    }
+    return true;
+}
+
 GEOHASH_area* 
 GEOHASH_decode(const char *hash)
 {

@@ -95,6 +95,14 @@ void test_geohash_neighbors(void)
     verify_neighbors("c23nb62w", "c23nb62x", "c23nb62t", "c23nb62q", "c23nb62y", "c23nb62r", "c23nb62z", "c23nb62m", "c23nb62v");
 }
 
+void test_geohash_verification(void)
+{
+    CU_ASSERT_EQUAL(GEOHASH_verify_hash("dqcw5"), 1);
+    CU_ASSERT_EQUAL(GEOHASH_verify_hash("dqcw7"), 1);
+    CU_ASSERT_EQUAL(GEOHASH_verify_hash("abcwd"), 0);
+    CU_ASSERT_EQUAL(GEOHASH_verify_hash("dqcw5@"), 0);
+}
+
 int main(int argc, char **argv)
 {
     CU_pSuite suite;
@@ -103,10 +111,11 @@ int main(int argc, char **argv)
 
     suite = CU_add_suite("GeoHashTestSuite", NULL, NULL);
 
-    CU_add_test( suite, "GeoHashDecodeTest",    test_geohash_decode    );
-    CU_add_test( suite, "GeoHashEncodeTest",    test_geohash_encode    );
-    CU_add_test( suite, "GeoHashAdjacentTest",  test_geohash_adjacent  );
-    CU_add_test( suite, "GeoHashNeighborsTest", test_geohash_neighbors );
+    CU_add_test( suite, "GeoHashDecodeTest",       test_geohash_decode       );
+    CU_add_test( suite, "GeoHashEncodeTest",       test_geohash_encode       );
+    CU_add_test( suite, "GeoHashAdjacentTest",     test_geohash_adjacent     );
+    CU_add_test( suite, "GeoHashNeighborsTest",    test_geohash_neighbors    );
+    CU_add_test( suite, "GeoHashVerificationTest", test_geohash_verification );
 
     CU_basic_set_mode(CU_BRM_VERBOSE);
     CU_basic_run_tests();
