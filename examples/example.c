@@ -1,4 +1,4 @@
-#include "libgeohash.h"
+#include <geohash.h>
 #include <stdlib.h>
 
 int 
@@ -12,7 +12,7 @@ main(int argc, char** argv)
     if (area == NULL)
         return EXIT_SUCCESS;
 
-    GEOHASH_release_area(area);
+    GEOHASH_free_area(area);
 
     hash = GEOHASH_encode();
     neighbors = GEOHASH_get_neighbors(hash);
@@ -25,7 +25,7 @@ main(int argc, char** argv)
     neighbors->south_east;
     neighbors->south_west;
 
-    GEOHASH_release_neighbors(neighbors);
+    GEOHASH_free_neighbors(neighbors);
 
     return EXIT_SUCCESS;
 }

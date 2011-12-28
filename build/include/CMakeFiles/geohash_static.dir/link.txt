@@ -1,2 +1,0 @@
-/usr/bin/ar cr libgeohash_static.a  CMakeFiles/geohash_static.dir/__/src/geohash.c.o
-/usr/bin/ranlib libgeohash_static.a
