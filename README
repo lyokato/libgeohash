@@ -1,6 +1,6 @@
 =======================================================================
  INSTALL
- =======================================================================
+=======================================================================
 
  1. cd build
  2. cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release
@@ -14,3 +14,55 @@
 4. make test
 5. make install
 
+=======================================================================
+ USAGE
+=======================================================================
+
+#include <geohash.h>
+
+/* Get Hash */
+char *hash;
+hash = GEOHASH_encode(latitude, longtitude, length);
+...
+free(hash);
+
+
+/* Get Area by Hash */
+GEOHASH_area *area;
+area = GEOHASH_decode("dqcw5");
+
+/* You can get the range of both latitude and longtitude
+
+area->latitude.max;
+area->latitude.min;
+area->longtitude.max;
+area->longtitude.min;
+
+*/
+GEOHASH_free_area(area);
+
+
+/* Get Adjacent Hash by Origin's Hash and Direction*/
+char *adjacent_hash;
+/* You can choose direction from GEOHASH_NORTH, GEOHASH_SOUTH, GEOHASH_EAST, and GEOHASH_WEST */
+adjacent_hash = GEOHASH_get_adjacent("dqcw5", GEOHASH_NORTH);
+...
+free(adjacent_hash);
+
+
+
+/* Get Neighbors' Hash by Origin's Hash */
+GEOHASH *neighbors;
+neighbors = GEOHASH_get_neighbors("dqcw5");
+
+/* You can get hashes of each direction's neighbor
+neighbors->north;
+neighbors->north_east;
+neighbors->north_west;
+neighbors->south;
+neighbors->south_east;
+neighbors->south_west;
+neighbors->east;
+neighbors->west;
+*/
+GEOHASH_free_neighbors(neighbors);
