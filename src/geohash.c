@@ -99,11 +99,17 @@ bool
 GEOHASH_verify_hash(const char *hash)
 {
     const char *p;
+    unsigned char c;
     p = hash;
     while (*p != '\0') {
-        if (strchr(BASE32_ENCODE_TABLE, tolower(*p++)) == NULL) {
+        c = toupper(*p++);
+        if (c < 0x30)
             return false;
-        }
+        c -= 0x30;
+        if (c > 43)
+            return false;
+        if (BASE32_DECODE_TABLE[c] == -1)
+            return false;
     }
     return true;
 }
@@ -112,7 +118,7 @@ GEOHASH_area*
 GEOHASH_decode(const char *hash)
 {
     const char *p;
-    char c;
+    unsigned char c;
     short bits;
     GEOHASH_area *area;
     GEOHASH_range *range1, *range2, *range_tmp;
