@@ -32,10 +32,10 @@ extern "C" {
 #endif
 
 typedef enum {
-  GEOHASH_NORTH = 0,
-  GEOHASH_EAST,
-  GEOHASH_WEST,
-  GEOHASH_SOUTH
+    GEOHASH_NORTH = 0,
+    GEOHASH_EAST,
+    GEOHASH_WEST,
+    GEOHASH_SOUTH
 } GEOHASH_direction;
 
 typedef struct {
