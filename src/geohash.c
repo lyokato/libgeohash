@@ -143,13 +143,6 @@ GEOHASH_decode(const char *hash)
             return NULL;
         }
 
-        /*
-        GEOHASH_refine_range(range1, (bits & 0x10) == 0x10);
-        GEOHASH_refine_range(range2, (bits & 0x08) == 0x08);
-        GEOHASH_refine_range(range1, (bits & 0x04) == 0x04);
-        GEOHASH_refine_range(range2, (bits & 0x02) == 0x02);
-        GEOHASH_refine_range(range1, (bits & 0x01) == 0x01);
-        */
         REFINE_RANGE(range1, bits, 0x10);
         REFINE_RANGE(range2, bits, 0x08);
         REFINE_RANGE(range1, bits, 0x04);
@@ -192,13 +185,6 @@ GEOHASH_encode(double lat, double lon, unsigned int len)
     for (i=0; i < len; i++) {
 
         bits = 0;
-        /*
-        bits |= (GEOHASH_range_bit(range1, val1) << 4);
-        bits |= (GEOHASH_range_bit(range2, val2) << 3);
-        bits |= (GEOHASH_range_bit(range1, val1) << 2);
-        bits |= (GEOHASH_range_bit(range2, val2) << 1);
-        bits |= (GEOHASH_range_bit(range1, val1) << 0);
-        */
         SET_BIT(bits, mid, range1, val1, 4);
         SET_BIT(bits, mid, range2, val2, 3);
         SET_BIT(bits, mid, range1, val1, 2);
