@@ -31,8 +31,8 @@ void verify_area(
     area = GEOHASH_decode(hash);
     CU_ASSERT_DOUBLE_EQUAL(area->latitude.max,   lat_max, 0.001);
     CU_ASSERT_DOUBLE_EQUAL(area->latitude.min,   lat_min, 0.001);
-    CU_ASSERT_DOUBLE_EQUAL(area->longtitude.max, lon_max, 0.001);
-    CU_ASSERT_DOUBLE_EQUAL(area->longtitude.min, lon_min, 0.001);
+    CU_ASSERT_DOUBLE_EQUAL(area->longitude.max, lon_max, 0.001);
+    CU_ASSERT_DOUBLE_EQUAL(area->longitude.min, lon_min, 0.001);
     GEOHASH_free_area(area);
 }
 

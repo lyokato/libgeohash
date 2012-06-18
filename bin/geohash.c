@@ -22,8 +22,8 @@ void show_area(const char *hash)
     printf("-----------------------------------------\n");
     printf("MAX LATITUDE:   %f\n", area->latitude.max);
     printf("MIN LATITUDE:   %f\n", area->latitude.min);
-    printf("MAX LONGTITUDE: %f\n", area->longtitude.max);
-    printf("MIN LONGTITUDE: %f\n", area->longtitude.min);
+    printf("MAX longitude: %f\n", area->longitude.max);
+    printf("MIN longitude: %f\n", area->longitude.min);
     GEOHASH_free_area(area);
 }
 
