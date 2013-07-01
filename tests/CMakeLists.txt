@@ -1,4 +1,8 @@
-INCLUDE_DIRECTORIES(${geohash_SOURCE_DIR}/include)
+INCLUDE_DIRECTORIES(${geohash_SOURCE_DIR}/include /usr/include /usr/local/include)
+LINK_DIRECTORIES(/usr/lib /usr/local/lib)
+
+SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}")
+FIND_PACKAGE(CUNIT REQUIRED)
 
 FILE(GLOB test_files ${geohash_SOURCE_DIR}/tests/*.c)
 FOREACH(filename ${test_files})
