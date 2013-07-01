@@ -2,7 +2,8 @@
 #include <CUnit/Console.h>
 #include <CUnit/Basic.h>
 #include "geohash.h"
-#include "stdio.h";
+#include <stdlib.h>
+#include "stdio.h"
 
 void verify_hash(double lat, double lon, int len, const char* expected)
 {
