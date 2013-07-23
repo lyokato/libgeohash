@@ -1,0 +1,13 @@
+tags
+CMakeCache.txt
+CMakeFiles/
+CTestTestfile.cmake
+Makefile
+Testing/
+cmake_install.cmake
+cmake_uninstall.cmake
+install_manifest.txt
+
+/bin/
+/lib/
+
