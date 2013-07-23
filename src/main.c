@@ -1,7 +1,8 @@
-#include <geohash.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+
+#include <geohash/geohash.h>
 
 void show_usage()
 {
