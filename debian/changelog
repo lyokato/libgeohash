@@ -1,0 +1,11 @@
+geohash (1.0.1) stable; urgency=low
+
+  * Initial packaging effort
+
+ -- Ricky Cormier <evilrix@gmail.com>  Tue, 23 Jul 2013 00:00:00 +0100
+
+geohash (1.0.0) stable; urgency=low
+
+  * Initial version
+
+ -- Lyo Kato <lyo.kato@gmail.com>  Tue, 23 Jul 2013 00:00:00 +0100

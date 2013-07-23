@@ -22,13 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-#include "geohash.h"
 #include <ctype.h>
 #include <string.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <assert.h>
+
+#include <geohash/geohash.h>
 
 #define MAX_HASH_LENGTH 22
 
@@ -50,15 +51,15 @@ THE SOFTWARE.
 
 static const char BASE32_ENCODE_TABLE[33] = "0123456789bcdefghjkmnpqrstuvwxyz";
 static const char BASE32_DECODE_TABLE[44] = {
-    /* 0 */   0, /* 1 */   1, /* 2 */   2, /* 3 */   3, /* 4 */   4,    
-    /* 5 */   5, /* 6 */   6, /* 7 */   7, /* 8 */   8, /* 9 */   9,    
-    /* : */  -1, /* ; */  -1, /* < */  -1, /* = */  -1, /* > */  -1, 
-    /* ? */  -1, /* @ */  -1, /* A */  -1, /* B */  10, /* C */  11, 
-    /* D */  12, /* E */  13, /* F */  14, /* G */  15, /* H */  16, 
-    /* I */  -1, /* J */  17, /* K */  18, /* L */  -1, /* M */  19, 
-    /* N */  20, /* O */  -1, /* P */  21, /* Q */  22, /* R */  23, 
-    /* S */  24, /* T */  25, /* U */  26, /* V */  27, /* W */  28, 
-    /* X */  29, /* Y */  30, /* Z */  31    
+    /* 0 */   0, /* 1 */   1, /* 2 */   2, /* 3 */   3, /* 4 */   4,
+    /* 5 */   5, /* 6 */   6, /* 7 */   7, /* 8 */   8, /* 9 */   9,
+    /* : */  -1, /* ; */  -1, /* < */  -1, /* = */  -1, /* > */  -1,
+    /* ? */  -1, /* @ */  -1, /* A */  -1, /* B */  10, /* C */  11,
+    /* D */  12, /* E */  13, /* F */  14, /* G */  15, /* H */  16,
+    /* I */  -1, /* J */  17, /* K */  18, /* L */  -1, /* M */  19,
+    /* N */  20, /* O */  -1, /* P */  21, /* Q */  22, /* R */  23,
+    /* S */  24, /* T */  25, /* U */  26, /* V */  27, /* W */  28,
+    /* X */  29, /* Y */  30, /* Z */  31
 };
 
 static const char NEIGHBORS_TABLE[8][33] = {
@@ -102,7 +103,7 @@ GEOHASH_verify_hash(const char *hash)
     return true;
 }
 
-GEOHASH_area* 
+GEOHASH_area*
 GEOHASH_decode(const char *hash)
 {
     const char *p;
@@ -115,9 +116,9 @@ GEOHASH_decode(const char *hash)
     if (area == NULL)
         return NULL;
 
-    area->latitude.max   =   90; 
-    area->latitude.min   =  -90; 
-    area->longitude.max =  180; 
+    area->latitude.max   =   90;
+    area->latitude.min   =  -90;
+    area->longitude.max =  180;
     area->longitude.min = -180;
 
     range1 = &area->longitude;
@@ -156,10 +157,10 @@ GEOHASH_decode(const char *hash)
     return area;
 }
 
-char* 
+char*
 GEOHASH_encode(double lat, double lon, unsigned int len)
 {
-    int i;
+    unsigned int i;
     char *hash;
     unsigned char bits = 0;
     double mid;
@@ -192,7 +193,7 @@ GEOHASH_encode(double lat, double lon, unsigned int len)
         SET_BIT(bits, mid, range1, val1, 0);
 
         hash[i] = BASE32_ENCODE_TABLE[bits];
-        
+
         val_tmp   = val1;
         val1      = val2;
         val2      = val_tmp;
@@ -205,7 +206,7 @@ GEOHASH_encode(double lat, double lon, unsigned int len)
     return hash;
 }
 
-void 
+void
 GEOHASH_free_area(GEOHASH_area *area)
 {
     free(area);
@@ -278,7 +279,7 @@ GEOHASH_get_adjacent(const char* hash, GEOHASH_direction dir)
     return base;
 }
 
-void 
+void
 GEOHASH_free_neighbors(GEOHASH_neighbors *neighbors)
 {
     free(neighbors->north);
