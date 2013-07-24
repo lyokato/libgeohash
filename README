@@ -27,7 +27,7 @@ perl ./scripts/install
 
 /* Get Hash */
 char *hash;
-hash = GEOHASH_encode(latitude, longtitude, length);
+hash = GEOHASH_encode(latitude, longitude, length);
 ...
 free(hash);
 
@@ -36,12 +36,12 @@ free(hash);
 GEOHASH_area *area;
 area = GEOHASH_decode("dqcw5");
 
-/* You can get the range of both latitude and longtitude
+/* You can get the range of both latitude and longitude
 
 area->latitude.max;
 area->latitude.min;
-area->longtitude.max;
-area->longtitude.min;
+area->longitude.max;
+area->longitude.min;
 
 */
 GEOHASH_free_area(area);
