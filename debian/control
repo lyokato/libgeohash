@@ -1,0 +1,11 @@
+Source: geohash
+Section: Libraries
+Priority: optional
+Maintainer: Ricky Cormier <evilrix@gmail.com>
+Build-Depends: cmake
+Standards-Version: 3.9.4
+
+Package: libgeohash
+Architecture: all
+Depends:
+Description: Geohash library

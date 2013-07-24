@@ -1,9 +1,11 @@
+#include <stdlib.h>
+#include <stdio.h>
+
 #include <CUnit/CUnit.h>
 #include <CUnit/Console.h>
 #include <CUnit/Basic.h>
-#include "geohash.h"
-#include <stdlib.h>
-#include "stdio.h"
+
+#include "geohash/geohash.h"
 
 void verify_hash(double lat, double lon, int len, const char* expected)
 {
@@ -11,7 +13,7 @@ void verify_hash(double lat, double lon, int len, const char* expected)
     hash = GEOHASH_encode(lat, lon, len);
     CU_ASSERT_STRING_EQUAL(hash, expected);
     free(hash);
-    //CU_ASSERT_PTR_NULL();
+    /*CU_ASSERT_PTR_NULL();*/
 }
 
 void test_geohash_encode(void)
@@ -24,8 +26,8 @@ void test_geohash_encode(void)
 }
 
 void verify_area(
-        const char *hash, 
-        double lat_min, double lon_min, 
+        const char *hash,
+        double lat_min, double lon_min,
         double lat_max, double lon_max)
 {
     GEOHASH_area *area;
@@ -104,7 +106,7 @@ void test_geohash_verification(void)
     CU_ASSERT_EQUAL(GEOHASH_verify_hash("dqcw5@"), 0);
 }
 
-int main(int argc, char **argv)
+int main( /* int argc, char **argv */ )
 {
     CU_pSuite suite;
 
