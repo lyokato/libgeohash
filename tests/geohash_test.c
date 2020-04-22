@@ -59,8 +59,8 @@ void test_geohash_adjacent(void)
 {
     verify_adjacent("dqcjq", GEOHASH_NORTH, "dqcjw");
     verify_adjacent("dqcjq", GEOHASH_SOUTH, "dqcjn");
-    verify_adjacent("dqcjq", GEOHASH_WEST,  "dqcjm");
-    verify_adjacent("dqcjq", GEOHASH_EAST,  "dqcjr");
+    verify_adjacent("y", GEOHASH_NORTH, "n");
+    verify_adjacent("y", GEOHASH_EAST, "z");
 }
 
 void verify_neighbors(

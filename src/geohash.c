@@ -256,7 +256,8 @@ GEOHASH_get_adjacent(const char* hash, GEOHASH_direction dir)
 
     strncpy(base, hash, len - 1);
 
-    if (strchr(border_table, last) != NULL) {
+    if (strchr(border_table, last) != NULL && len > 1)
+    {
         refined_base = GEOHASH_get_adjacent(base, dir);
         if (refined_base == NULL) {
             free(base);
